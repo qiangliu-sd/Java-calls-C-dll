@@ -1,4 +1,4 @@
-# Call Windows C-dll functions in Java: A Complete Template
+# Call Windows C-dll (foreign) functions in Java: A Complete Template
 Figuring out all the details of Java calling (foreign) C functions [(1)](#notes) defined in Windows dll could be daunting. This package uses simple examples to demonstrate the necessary know-how.
 
 ### Build Windows Dll
@@ -9,12 +9,12 @@ To create a DLL project in Visual Studio 2022:
 4.	Delete dllmain.cpp, framework.h, pch.h, pch.cpp from Project.
 5.	Move qlcfuncs.cpp to the project folder (i.e., winCDynamic) and add to the project. Note: If you provide a header file qlcfuncs.h, it will NOT work!
 6.	Set the VS2022 Compiler by opening the Property Pages dialog and Configuration Properties in the left pane:
-   
-C/C++ -> Precompiled Headers: 
+
+- C/C++ -> Precompiled Headers: 
 set [Precompiled Headers] to [Not Using Precompiled Headers]
 
 Note: the default calling convention should be [__cdecl] in the VS2022 Compiler. If not, set as follows:
-C/C++ -> Advanced: 
+- C/C++ -> Advanced: 
 		set [Calling Convention] to [__cdecl (/Gd)]
 
 Now, you can build your Windows dll and copy winCDynamic.dll to your desired folder (in my case libc, see [2](#notes)).
@@ -56,7 +56,7 @@ To rebuild the dll, first set up the VS2022 Compiler:
 add [../libc/winCppStatic.lib] to [Additional Dependencies]
 
 - C/C++ -> Preprocessor: 
-Add [_QL__INCLUDE_STATIC_LIB_] to [Preprocessor Definitions]
+Add [\_QL__INCLUDE_STATIC_LIB_] to [Preprocessor Definitions]
 
 Rebuild dll, then, re-compile Java and run again, and you will see that qlArrayArg() is successful.
 
