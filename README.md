@@ -1,4 +1,4 @@
-# Call Windows C-dll (foreign) functions in Java: A Complete Template
+# Call Windows C-dll (foreign) functions in Java: A complete template
 Figuring out all the details of Java calling (foreign) C functions [(1)](#notes) defined in Windows dll could be daunting. This package uses simple examples to demonstrate the necessary know-how.
 
 ### Build Windows Dll
