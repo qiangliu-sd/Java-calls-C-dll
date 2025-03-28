@@ -1,5 +1,5 @@
 # Call Windows C-dll (foreign) functions in Java: A complete template
-Figuring out all the details of Java calling (foreign) C functions [(1)](#notes) defined in Windows dll could be daunting. This package uses simple examples to demonstrate the necessary know-how.
+Figuring out all the details of Java calling (foreign) C functions (see [1](#notes)) defined in Windows dll could be daunting. This package uses simple examples to demonstrate the necessary know-how.
 
 ### Build Windows Dll
 To create a DLL project in Visual Studio 2022:
@@ -7,7 +7,7 @@ To create a DLL project in Visual Studio 2022:
 2.	Choose C++, and choose *Dynamic-link Library (DLL)*.
 3.	Enter a name, in my case winCDynamic, for your project.
 4.	Delete dllmain.cpp, framework.h, pch.h, pch.cpp from Project.
-5.	Move qlcfuncs.cpp to the project folder (i.e., winCDynamic) and add to the project. Note: If you provide a header file qlcfuncs.h, it will NOT work!
+5.	Move **qlcfuncs.cpp** to the project folder (i.e., winCDynamic) and add to the project. Note: If you provide a header file **qlcfuncs.h**, it will NOT work!
 6.	Set the VS2022 Compiler by opening the *Property Pages dialog* and *Configuration Properties* in the left pane:
 
 - C/C++ -> Precompiled Headers: 
@@ -28,7 +28,7 @@ Move QlDllC.java to the c4JvTest folder. Compile it by entering the command:
 and QlDllC.class will be created. Run by typing the command:
 > java QlDllC
 
-you will see three successful calls, such as qlDblRetArgs(). But you will get the following error as well:
+You will see three successful calls, such as qlDblRetArgs(). But you will get the following error as well:
 - Exception in thread "main" java.util.NoSuchElementException: No value present
         at java.base/java.util.Optional.get(Optional.java:143)
         at QlDllC.cFuncHandle(QlDllC.java:67)
@@ -43,7 +43,7 @@ To create a static library project in Visual Studio 2022:
 2.	Choose C++, and choose *Static Library*.
 3.	Enter a name, in my case winCppStatic, for your project.
 4.	Delete framework.h, pch.h, pch.cpp from Project.
-5.	Move qlcpptools.h and qlcpptools.cpp to the project folder (i.e., winCppStatic).
+5.	Move **qlcpptools.h & qlcpptools.cpp** to the project folder (i.e., winCppStatic).
 6.	Set up the VS2022 Compiler:	set [Precompiled Headers] to [Not Using Precompiled Headers].
 
 Note: The default calling convention should be [__cdecl] in the VS2022 Compiler. If not, set it as in the Build Windows Dll section.
@@ -58,7 +58,7 @@ add [../libc/winCppStatic.lib] to [Additional Dependencies]
 - C/C++ -> Preprocessor: 
 Add [\_QL__INCLUDE_STATIC_LIB_] to [Preprocessor Definitions]
 
-Rebuild dll, then, re-compile Java and run again, and you will see that qlArrayArg() is successful.
+Rebuild dll, re-compile Java, run again, and you will see that qlArrayArg() is successful.
 
 ### Notes:
 [1] [The Foreign Function and Memory API](https://dev.java/learn/ffm/)
